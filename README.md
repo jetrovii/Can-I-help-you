@@ -1,1 +1,609 @@
-# amablidadistribution
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título de la pestaña en Title Case -->
+    <title>Anablida Distribution</title>
+    
+    <!-- Favicon SVG embebido -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23030508'/><path d='M30 70 L50 30 L70 70 M38 54 L62 54' stroke='%2306b6d4' stroke-width='9' stroke-linecap='round' fill='none'/><circle cx='50' cy='30' r='6' fill='%23a855f7'/></svg>">
+
+    <style>
+        :root {
+            --bg-color: #030508;
+            --card-bg: #0f141f;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #a855f7;
+            --text-main: #f4f4f5;
+            --text-muted: #71717a;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* Ambient Glows */
+        .ambient-glow-1 {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(0,0,0,0) 70%);
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ambient-glow-2 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.06) 0%, rgba(0,0,0,0) 70%);
+            top: 1200px;
+            right: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 6%;
+            position: sticky;
+            top: 0;
+            background: rgba(3, 5, 8, 0.88);
+            backdrop-filter: blur(16px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
+        .logo span { color: var(--accent-cyan); }
+
+        .nav-right { display: flex; align-items: center; gap: 25px; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; margin-left: 15px; }
+        nav a:hover { color: #fff; }
+
+        .lang-select {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .lang-select:hover { border-color: var(--accent-cyan); }
+        .lang-select option { background: #080d1a; color: #fff; }
+
+        /* Hero Section */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-cyan);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            background: rgba(6, 182, 212, 0.04);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.05;
+            text-transform: uppercase;
+            max-width: 920px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span.hero-title-gradient {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 620px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #000;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-cyan);
+            color: #ffffff;
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Section Layouts */
+        section { padding: 90px 6%; position: relative; z-index: 10; max-width: 1300px; margin: 0 auto; }
+        
+        .section-header { margin-bottom: 50px; text-align: center; }
+        .section-header h2 { font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+        .section-header p { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px; }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .btn-card {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-purple { background: var(--accent-purple); color: #fff; }
+        .btn-purple:hover { background: #9333ea; box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+
+        .dsp-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px 45px;
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(15, 20, 31, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .dsp-item {
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .dsp-item:hover { color: var(--accent-cyan); }
+
+        .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+        .pillar-card {
+            background: rgba(10, 15, 26, 0.4);
+            border: 1px solid var(--border-color);
+            padding: 30px 25px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .pillar-card h4 { color: var(--accent-cyan); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .pillar-card p { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; }
+
+        .manifesto-box {
+            background: linear-gradient(180deg, rgba(12, 17, 29, 0.8) 0%, rgba(3, 5, 8, 0.9) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 70px 40px;
+            text-align: center;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .manifesto-box h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .manifesto-box p {
+            font-size: 1.2rem;
+            color: #a1a1aa;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .join-section {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 950px;
+            margin: 60px auto 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-section h3 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .join-section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-weight: 300;
+        }
+
+        .btn-glow {
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(168, 85, 247, 0.5);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 5, 8, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            text-align: left;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: none; border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .modal-close:hover { color: #fff; }
+
+        .form-group { margin-bottom: 20px; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+        }
+
+        .form-group textarea { resize: vertical; height: 100px; }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 60px 6%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        footer a { color: #fff; text-decoration: none; font-weight: 700; transition: 0.2s; }
+        footer a:hover { color: var(--accent-cyan); }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 60px 5%; }
+            .nav-right nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            nav a { margin: 0; }
+            .join-section { padding: 40px 20px; }
+            .modal-card { padding: 25px; margin: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
+    <header>
+        <div class="logo">ANABLIDA <span>DISTRIBUTION</span></div>
+        <div class="nav-right">
+            <nav>
+                <a href="#artistas" data-es="Artistas" data-en="Artists">Artistas</a>
+                <a href="#infraestructura" data-es="Infraestructura" data-en="Infrastructure">Infraestructura</a>
+                <a href="#vision" data-es="Visión" data-en="Vision">Visión</a>
+                <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+            </nav>
+            <select class="lang-select" onchange="toggleLanguage(this.value)">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="hero">
+        <span class="hero-badge" data-es="Distribución Digital & Infraestructura Musical" data-en="Digital Distribution & Label Infrastructure">Distribución Digital & Infraestructura Musical</span>
+        
+        <h1>
+            <span class="hero-title-main" data-es="Del underground a las " data-en="From the underground to the ">Del underground a las </span><span class="hero-title-gradient" data-es="grandes ligas." data-en="major leagues.">grandes ligas.</span>
+        </h1>
+
+        <p data-es="Potenciamos el talento independiente. Desarrollamos la visión, el sonido y la infraestructura de distribución para llevar proyectos emergentes al escenario global." data-en="Empowering independent talent. We build the vision, sound, and distribution infrastructure to take emerging projects to the global stage.">Potenciamos el talento independiente. Desarrollamos la visión, el sonido y la infraestructura de distribución para llevar proyectos emergentes al escenario global.</p>
+        
+        <div class="hero-cta">
+            <a href="#artistas" class="btn-primary" data-es="Ver Artistas" data-en="View Roster">Ver Artistas</a>
+        </div>
+    </div>
+
+    <!-- Artistas Destacados -->
+    <section id="artistas">
+        <div class="section-header">
+            <h2 data-es="Artistas Destacados" data-en="Featured Artists">Artistas Destacados</h2>
+            <p data-es="Proyectos y talento que forman parte de nuestra plataforma" data-en="Projects and talent associated with our platform">Proyectos y talento que forman parte de nuestra plataforma</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto;">
+            
+            <div class="card">
+                <img src="https://i.scdn.co/image/ab6761610000e5ebf0d3427ff2d2a9745c9860ac" alt="Valuto" class="card-img">
+                <div style="padding: 15px 5px 5px 5px;">
+                    <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 2px;">Valuto</h3>
+                    <p style="font-size: 0.8rem; color: #a1a1aa; margin-bottom: 15px;">Spotify Verified Artist</p>
+                    <a href="https://open.spotify.com/intl-es/artist/0AQym39jmsVTiggRZdyiSW?si=Eg5aBO9RSd2ha7gClvKMjw" target="_blank" class="btn-card btn-purple">View Spotify Profile</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://i.scdn.co/image/ab67616d0000b273cf12441404178d1cbd65f9c9" alt="yf_xs" class="card-img">
+                <div style="padding: 15px 5px 5px 5px;">
+                    <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 2px;">yf_xs</h3>
+                    <p style="font-size: 0.8rem; color: #a1a1aa; margin-bottom: 15px;">Spotify Verified Artist</p>
+                    <a href="https://open.spotify.com/intl-es/artist/0eUxr3HC30zCeSKl4l4qGK?si=QrM7GCiURIqoNTCuxdIMmQ" target="_blank" class="btn-card btn-purple">View Spotify Profile</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://i.scdn.co/image/ab6761610000e5ebddb2766c05eee55cd404685c" alt="JOAKO" class="card-img" style="object-position: top;">
+                <div style="padding: 15px 5px 5px 5px;">
+                    <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 2px;">JOAKO</h3>
+                    <p style="font-size: 0.8rem; color: #a1a1aa; margin-bottom: 15px;">Spotify Verified Artist</p>
+                    <a href="https://open.spotify.com/intl-es/artist/5kErqJMmN35SkXsrmLyPdc?si=qFYzcmFIQXGnHCL3eu_OqQ" target="_blank" class="btn-card btn-purple">View Spotify Profile</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Red DSP & Ecosistema -->
+    <section style="padding-top: 40px; padding-bottom: 60px;">
+        <div class="section-header" style="margin-bottom: 30px;">
+            <h2 style="font-size: 1.2rem;" data-es="Red de Distribución Global" data-en="Global Distribution Network">Red de Distribución Global</h2>
+            <p data-es="Alcance omnicanal a los principales servicios de streaming y tiendas digitales" data-en="Omnichannel delivery across major streaming platforms and digital stores">Alcance omnicanal a los principales servicios de streaming y tiendas digitales</p>
+        </div>
+        <div class="dsp-bar">
+            <span class="dsp-item">Spotify</span>
+            <span class="dsp-item">Apple Music</span>
+            <span class="dsp-item">YouTube Music</span>
+            <span class="dsp-item">Amazon Music</span>
+            <span class="dsp-item">Deezer</span>
+            <span class="dsp-item">Tidal</span>
+            <span class="dsp-item">TikTok / Meta</span>
+        </div>
+    </section>
+
+    <!-- Visión e Infraestructura -->
+    <section id="infraestructura">
+        <div class="manifesto-box">
+            <h2 data-es="Infraestructura & Operaciones" data-en="Infrastructure & Operations">Infraestructura & Operaciones</h2>
+            <p data-es="Anablida Distribution nace para ofrecer una infraestructura de distribución limpia, precisa y estratégica a artistas y sellos independientes. Nos enfocamos en la gestión rigurosa de metadatos, la administración de catálogo y el cumplimiento de los estándares globales de la industria musical." data-en="Anablida Distribution provides a clean, precise, and strategic distribution infrastructure for independent artists and labels. We focus on rigorous metadata management, catalogue administration, and compliance with global music industry standards.">
+                Anablida Distribution nace para ofrecer una infraestructura de distribución limpia, precisa y estratégica a artistas y sellos independientes. Nos enfocamos en la gestión rigurosa de metadatos, la administración de catálogo y el cumplimiento de los estándares globales de la industria musical.
+            </p>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h4 data-es="Gestión de Metadatos" data-en="Metadata Management">Gestión de Metadatos</h4>
+                    <p data-es="Formateo estricto de créditos, códigos ISRC/UPC y metadatos enriquecidos para una ingesta limpia a DSPs." data-en="Strict formatting of credits, ISRC/UPC codes, and rich metadata for seamless DSP ingestion.">Formateo estricto de créditos, códigos ISRC/UPC y metadatos enriquecidos para una ingesta limpia a DSPs.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4 data-es="Administración de Catálogo" data-en="Catalogue Administration">Administración de Catálogo</h4>
+                    <p data-es="Supervisión técnica de lanzamientos, gestión de derechos de propiedad intelectual y control de distribución." data-en="Technical release management, intellectual property rights administration, and distribution control.">Supervisión técnica de lanzamientos, gestión de derechos de propiedad intelectual y control de distribución.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4 data-es="Proyección & Crecimiento" data-en="Scalability & Reach">Proyección & Crecimiento</h4>
+                    <p data-es="Conectamos catálogo emergente de alta calidad con redes de distribución e infraestructura internacional." data-en="Connecting high-quality emerging catalogue with global distribution networks and infrastructure.">Conectamos catálogo emergente de alta calidad con redes de distribución e infraestructura internacional.</p>
+                </div>
+            </div>
+
+            <div class="join-section">
+                <h3 data-es="¿Quieres distribuir con nosotros?" data-en="Want to distribute with us?">¿Quieres distribuir con nosotros?</h3>
+                <p data-es="Evaluamos solicitudes de artistas y sellos emergentes para incorporar sus catálogos a nuestra red de distribución." data-en="We evaluate applications from emerging artists and labels to onboard their catalogues into our distribution network.">
+                    Evaluamos solicitudes de artistas y sellos emergentes para incorporar sus catálogos a nuestra red de distribución.
+                </p>
+                <button class="btn-glow" onclick="openModal()" data-es="Solicitar Distribución" data-en="Apply for Distribution">Solicitar Distribución</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="submissionModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 style="font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; color: #fff;" data-es="Solicitud de Distribución" data-en="Distribution Application">Solicitud de Distribución</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px;" data-es="Completa los datos para evaluar tu catálogo o lanzamiento." data-en="Fill in the details to evaluate your catalogue or release.">Completa los datos para evaluar tu catálogo o lanzamiento.</p>
+            
+            <form onsubmit="handleSubmission(event)">
+                <div class="form-group">
+                    <label data-es="Nombre del Artista o Sello" data-en="Artist or Label Name">Nombre del Artista o Sello</label>
+                    <input type="text" required placeholder="Ej. Valuto / Sello Independent">
+                </div>
+                <div class="form-group">
+                    <label data-es="Enlace de Música / Demo (Spotify, SoundCloud, Drive)" data-en="Music / Demo Link (Spotify, SoundCloud, Drive)">Enlace de Música / Demo (Spotify, SoundCloud, Drive)</label>
+                    <input type="url" required placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label data-es="Redes Sociales / Instagram" data-en="Social Media / Instagram">Redes Sociales / Instagram</label>
+                    <input type="text" required placeholder="@tuinstagram">
+                </div>
+                <div class="form-group">
+                    <label data-es="Detalles del Lanzamiento o Catálogo" data-en="Release or Catalogue Details">Detalles del Lanzamiento o Catálogo</label>
+                    <textarea placeholder="Número de tracks, fecha estimada, género, derechos/licencias..."></textarea>
+                </div>
+                <button type="submit" class="btn-glow" style="width: 100%; text-align: center; border: none; cursor: pointer;" data-es="Enviar Solicitud" data-en="Submit Application">Enviar Solicitud</button>
+            </form>
+        </div>
+    </div>
+
+    <footer id="contacto">
+        <p style="margin-bottom: 10px;" data-es="¿Consultas de distribución o gestión de catálogo?" data-en="Distribution inquiries or catalogue management?">¿Consultas de distribución o gestión de catálogo?</p>
+        <p style="margin-bottom: 30px;"><a href="mailto:contacto@anablida.com">contacto@anablida.com</a></p>
+        <p style="font-size: 0.7rem; color: #52525b;" data-es="&copy; 2026 Anablida Distribution. Todos los derechos reservados." data-en="&copy; 2026 Anablida Distribution. All rights reserved.">&copy; 2026 Anablida Distribution. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleLanguage(lang) {
+            const elements = document.querySelectorAll('[data-es]');
+            elements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    el.innerText = text;
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        function openModal() {
+            document.getElementById('submissionModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('submissionModal').classList.remove('active');
+        }
+
+        function handleSubmission(event) {
+            event.preventDefault();
+            alert('¡Solicitud enviada con éxito! Revisaremos tu material pronto.');
+            closeModal();
+            event.target.reset();
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('submissionModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+
+</body>
+</html>

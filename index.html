@@ -410,6 +410,32 @@
             .join-section { padding: 40px 20px; }
             .modal-card { padding: 25px; margin: 0 20px; }
         }
+
+        /* Optimización responsiva adicional para dispositivos Android / Móviles */
+        @media (max-width: 480px) {
+            .logo { font-size: 0.95rem; letter-spacing: 2px; text-align: center; }
+            .hero { padding: 40px 4%; min-height: auto; }
+            .hero-badge { font-size: 0.65rem; padding: 5px 12px; letter-spacing: 2px; }
+            .hero h1 { font-size: 2.1rem; line-height: 1.15; }
+            .hero p { font-size: 0.95rem; }
+            section { padding: 45px 4%; }
+            .card-img { height: 230px; }
+            .manifesto-box { padding: 40px 18px; }
+            .manifesto-box h2 { font-size: 1.4rem; }
+            .manifesto-box p { font-size: 1rem; line-height: 1.6; }
+            .join-section { padding: 35px 15px; margin-top: 40px; }
+            .join-section h3 { font-size: 1.25rem; }
+            .modal-card { padding: 20px 15px; }
+            .dsp-bar { gap: 15px 20px; padding: 15px 10px; }
+            .dsp-item { font-size: 0.75rem; }
+        }
+
+        /* Ajuste para pantallas muy pequeñas (Androids compactos de 320px - 360px) */
+        @media (max-width: 360px) {
+            .hero h1 { font-size: 1.75rem; }
+            .btn-primary, .btn-glow { padding: 12px 20px; font-size: 0.7rem; }
+            nav a { font-size: 0.68rem; letter-spacing: 1px; }
+        }
     </style>
 </head>
 <body>

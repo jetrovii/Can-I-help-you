@@ -50,7 +50,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 5%;
+            padding: 20px 5%;
             position: sticky;
             top: 0;
             background: rgba(0, 0, 0, 0.95);
@@ -76,8 +76,19 @@
             color: var(--brand-cyan);
         }
 
-        .nav-right { display: flex; align-items: center; gap: 30px; }
-        nav { display: flex; align-items: center; gap: 28px; }
+        .nav-right { 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+        }
+
+        nav { 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+            flex-wrap: wrap;
+        }
+
         nav a { 
             color: var(--text-muted); 
             text-decoration: none; 
@@ -86,6 +97,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: 0.2s;
+            white-space: nowrap;
         }
         nav a:hover { color: #ffffff; }
 
@@ -99,6 +111,7 @@
             outline: none;
             cursor: pointer;
             border-radius: 4px;
+            flex-shrink: 0;
         }
         .lang-select option { background: #000; color: #fff; }
 
@@ -132,7 +145,7 @@
 
         /* Título Estilo Slimek Krew + Texto Anablida */
         .hero h1 {
-            font-size: clamp(2.8rem, 8vw, 6.8rem);
+            font-size: clamp(2.5rem, 8vw, 6.8rem);
             font-weight: 900;
             letter-spacing: -2px;
             line-height: 1.02;
@@ -408,10 +421,29 @@
         footer a { color: #fff; text-decoration: none; font-weight: 700; }
 
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 20px; }
-            .nav-right { width: 100%; justify-content: space-between; }
-            nav { gap: 15px; }
-            nav a { font-size: 0.75rem; }
+            header { 
+                flex-direction: column; 
+                align-items: center;
+                gap: 15px; 
+                padding: 15px 4%;
+            }
+            .logo {
+                text-align: center;
+            }
+            .nav-right { 
+                width: 100%; 
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            nav { 
+                justify-content: center;
+                gap: 12px; 
+                width: 100%;
+            }
+            nav a { 
+                font-size: 0.72rem; 
+            }
             .hero-actions { width: 100%; flex-direction: column; }
             .btn-bold-white, .btn-bold-outline { width: 100%; text-align: center; }
             footer { flex-direction: column; align-items: flex-start; }
@@ -506,7 +538,7 @@
         <div class="pillars-grid">
             <div class="pillar-card">
                 <h3 data-es="Control de Metadatos" data-en="Metadata Control">Control de Metadatos</h3>
-                <p data-es="Estándares estrictos de ingesta ISRC/UPC y entrega directa a más de 150 plataformas digitales." data-en="Strict ISRC/UPC standards and direct ingestion to over 150+ DSPs worldwide.">Estándares estrictos de ingesta ISRC/UPC y entrega directa a más de 150 plataformas digitales.</p>
+                <p data-es="Estándares strictly de ingesta ISRC/UPC y entrega directa a más de 150 plataformas digitales." data-en="Strict ISRC/UPC standards and direct ingestion to over 150+ DSPs worldwide.">Estándares estrictos de ingesta ISRC/UPC y entrega directa a más de 150 plataformas digitales.</p>
             </div>
 
             <div class="pillar-card">

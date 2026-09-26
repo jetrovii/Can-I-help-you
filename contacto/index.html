@@ -16,7 +16,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.4; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
 
         header {
             display: flex;
@@ -31,37 +31,53 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .logo { font-size: 1.15rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: #ffffff; text-decoration: none; }
+        .logo { font-size: 1.15rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: #ffffff; text-decoration: none; white-space: nowrap; }
         .logo span { color: var(--brand-cyan); }
 
         .nav-right { display: flex; align-items: center; gap: 20px; }
-        nav { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        nav { display: flex; align-items: center; gap: 20px; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
         nav a:hover, nav a.active { color: #ffffff; }
 
         .lang-select { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid var(--border-color); padding: 5px 10px; font-size: 0.8rem; font-weight: 700; border-radius: 4px; }
 
-        main { max-width: 1000px; margin: 0 auto; padding: 60px 5% 90px; }
+        main { max-width: 1200px; margin: 0 auto; padding: 60px 5% 90px; }
 
         .page-header { margin-bottom: 40px; }
-        .page-header h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
-        .page-header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; }
+        .page-header h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
+        .page-header p { color: var(--text-muted); font-size: 1.05rem; margin-top: 10px; max-width: 600px; }
 
-        .contact-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; }
-        .contact-info { margin-bottom: 30px; }
-        .contact-info label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; font-weight: 700; }
-        .contact-info a { color: var(--brand-cyan); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
-        .contact-info a:hover { text-decoration: underline; }
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+
+        .contact-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 4px; }
+        .info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); font-weight: 800; margin-bottom: 8px; }
+        
+        .info-value-email { 
+            font-size: clamp(0.95rem, 3.5vw, 1.25rem); 
+            font-weight: 800; 
+            color: var(--brand-cyan); 
+            text-decoration: none; 
+            word-break: break-word; 
+            overflow-wrap: anywhere; 
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .info-value-text { font-size: 0.95rem; color: var(--text-main); line-height: 1.6; }
 
         footer { border-top: 1px solid var(--border-color); padding: 60px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
         footer p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
         footer a { color: #fff; text-decoration: none; font-weight: 700; }
 
-        @media (max-width: 768px) {
-            header { flex-direction: column; align-items: center; gap: 15px; }
-            .nav-right { width: 100%; justify-content: center; flex-wrap: wrap; }
-            nav { justify-content: center; gap: 12px; width: 100%; }
-            .contact-box { padding: 25px; }
+        /* Ajustes específicos para pantallas móviles */
+        @media (max-width: 850px) {
+            header { flex-direction: column; align-items: center; gap: 15px; padding: 15px 4%; }
+            .nav-right { width: 100%; flex-direction: column; gap: 12px; }
+            nav { justify-content: center; gap: 10px 14px; flex-wrap: wrap; width: 100%; }
+            nav a { font-size: 0.75rem; }
+            
+            .contact-container { grid-template-columns: 1fr; gap: 25px; }
+            .contact-card { padding: 20px; }
         }
     </style>
 </head>
@@ -90,14 +106,13 @@
             <p data-es="Ponte en contacto con nuestro equipo para consultas de distribución o soporte." data-en="Get in touch with our team for distribution inquiries or support.">Ponte en contacto con nuestro equipo para consultas de distribución o soporte.</p>
         </div>
 
-        <div class="contact-box">
-            <div class="contact-info">
-                <label data-es="Correo Electrónico" data-en="Email Address">Correo Electrónico</label>
-                <a href="mailto:contacto@anablidadistribution.com">contacto@anablidadistribution.com</a>
-            </div>
-            <div class="contact-info" style="margin-bottom: 0;">
-                <label data-es="Atención General" data-en="General Support">Atención General</label>
-                <p style="color: var(--text-muted); font-size: 0.95rem;" data-es="Respuestas en un plazo de 24 a 48 horas hábiles." data-en="Responses within 24 to 48 business hours.">Respuestas en un plazo de 24 a 48 horas hábiles.</p>
+        <div class="contact-container">
+            <div class="contact-card">
+                <div class="info-label" data-es="Correo Electrónico" data-en="Email Address">Correo Electrónico</div>
+                <a href="mailto:contacto@anablidadistribution.com" class="info-value-email">contacto@anablidadistribution.com</a>
+
+                <div class="info-label" data-es="Atención General" data-en="General Support">Atención General</div>
+                <p class="info-value-text" data-es="Respuestas en un plazo de 24 a 48 horas hábiles." data-en="Responses within 24 to 48 business hours.">Respuestas en un plazo de 24 a 48 horas hábiles.</p>
             </div>
         </div>
     </main>

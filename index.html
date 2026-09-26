@@ -3,18 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <title>ANABLIDA DISTRIBUTION</title>
-    
-    <!-- SEO & OG Meta Tags -->
-    <meta name="description" content="Anablida Distribution | Digital Music Infrastructure & Label Services">
-    <meta property="og:title" content="ANABLIDA DISTRIBUTION">
-    <meta property="og:description" content="Del underground a las grandes ligas. Distribución digital e infraestructura musical.">
-    <meta property="og:type" content="website">
-
-    <!-- Favicon -->
+    <title>ANABLIDA DISTRIBUTION | Inicio</title>
+    <meta name="description" content="Anablida Distribution - Digital Music Infrastructure & Label Services">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000000'/><text x='50%' y='65%' font-size='60' font-weight='900' fill='%2300f0ff' text-anchor='middle' font-family='sans-serif'>A</text></svg>">
-
     <style>
         :root {
             --bg-color: #000000;
@@ -27,12 +18,7 @@
             --brand-blue: #3b82f6;
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         
         html, body { 
             width: 100%;
@@ -42,8 +28,6 @@
             color: var(--text-main); 
             line-height: 1.4;
         }
-
-        html { scroll-behavior: smooth; }
 
         /* Header Navegación */
         header {
@@ -68,26 +52,14 @@
             text-transform: uppercase; 
             color: #ffffff;
             text-decoration: none;
-            cursor: pointer;
             display: inline-block;
         }
 
-        .logo span {
-            color: var(--brand-cyan);
-        }
+        .logo span { color: var(--brand-cyan); }
 
-        .nav-right { 
-            display: flex; 
-            align-items: center; 
-            gap: 20px; 
-        }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
 
-        nav { 
-            display: flex; 
-            align-items: center; 
-            gap: 20px; 
-            flex-wrap: wrap;
-        }
+        nav { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 
         nav a { 
             color: var(--text-muted); 
@@ -99,7 +71,8 @@
             transition: 0.2s;
             white-space: nowrap;
         }
-        nav a:hover { color: #ffffff; }
+
+        nav a:hover, nav a.active { color: #ffffff; }
 
         .lang-select {
             background: rgba(255, 255, 255, 0.05);
@@ -111,24 +84,19 @@
             outline: none;
             cursor: pointer;
             border-radius: 4px;
-            flex-shrink: 0;
         }
-        .lang-select option { background: #000; color: #fff; }
 
-        /* Hero Section Combinado */
+        /* Hero */
         .hero {
-            min-height: 85vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 60px 5%;
-            width: 100%;
-            position: relative;
         }
 
-        /* Insignia / Tag Pill Anablida */
         .pill-tag {
             display: inline-block;
             border: 1px solid rgba(0, 240, 255, 0.3);
@@ -143,9 +111,8 @@
             margin-bottom: 35px;
         }
 
-        /* Título Estilo Slimek Krew + Texto Anablida */
         .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 6.8rem);
+            font-size: clamp(2.5rem, 8vw, 6.5rem);
             font-weight: 900;
             letter-spacing: -2px;
             line-height: 1.02;
@@ -155,7 +122,6 @@
             margin-bottom: 25px;
         }
 
-        /* Gradiente en "GRANDES LIGAS." */
         .gradient-text {
             background: linear-gradient(135deg, var(--brand-purple) 0%, var(--brand-blue) 50%, var(--brand-cyan) 100%);
             -webkit-background-clip: text;
@@ -169,243 +135,26 @@
             max-width: 680px;
             line-height: 1.6;
             margin-bottom: 45px;
-            font-weight: 400;
         }
 
-        /* Botones Acción */
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+        .hero-actions { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
 
-        .btn-bold-white {
-            background: #ffffff;
-            color: #000000;
+        .btn-bold-white, .btn-bold-outline {
             padding: 16px 36px;
             text-decoration: none;
             font-weight: 800;
             font-size: 0.85rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            border: 1px solid #ffffff;
-            transition: 0.2s;
-            cursor: pointer;
             display: inline-block;
-        }
-
-        .btn-bold-white:hover {
-            background: #e5e5e5;
-            border-color: #e5e5e5;
-        }
-
-        .btn-bold-outline {
-            background: transparent;
-            color: #ffffff;
-            padding: 16px 36px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            border: 1px solid var(--border-color);
-            transition: 0.2s;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn-bold-outline:hover {
-            border-color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Layout Secciones */
-        section { 
-            padding: 90px 5%; 
-            position: relative; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            width: 100%; 
-            border-top: 1px solid var(--border-color);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            margin-bottom: 40px;
-        }
-
-        /* Roster Artistas */
-        .cards-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px; 
-        }
-
-        .artist-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            transition: 0.3s;
-        }
-
-        .artist-card:hover {
-            border-color: var(--brand-cyan);
-        }
-
-        .artist-img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            display: block;
-            filter: grayscale(20%);
-            transition: 0.3s;
-        }
-
-        .artist-card:hover .artist-img {
-            filter: grayscale(0%);
-        }
-
-        .artist-info {
-            padding-top: 18px;
-        }
-
-        .artist-name {
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 2px;
-            letter-spacing: -0.5px;
-        }
-
-        .artist-sub {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Red DSPs */
-        .dsp-flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px 45px;
-            align-items: center;
-        }
-
-        .dsp-name {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
             transition: 0.2s;
         }
 
-        .dsp-name:hover {
-            color: var(--brand-cyan);
-        }
+        .btn-bold-white { background: #ffffff; color: #000000; border: 1px solid #ffffff; }
+        .btn-bold-white:hover { background: #e5e5e5; }
 
-        /* Pillars Grid */
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .pillar-card {
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            background: var(--card-bg);
-        }
-
-        .pillar-card h3 {
-            font-size: 1.1rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
-
-        .pillar-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        /* Modales */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.2s;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-box {
-            background: #000000;
-            border: 1px solid var(--border-color);
-            padding: 40px 35px;
-            width: 100%;
-            max-width: 520px;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px; right: 20px;
-            background: none; border: none;
-            color: #fff;
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-        .form-group { margin-bottom: 20px; }
-
-        .form-group label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            color: var(--text-muted);
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            padding: 12px 14px;
-            color: #fff;
-            font-size: 0.9rem;
-            outline: none;
-            border-radius: 0;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--brand-cyan);
-        }
-
-        .form-group textarea { height: 90px; resize: vertical; }
+        .btn-bold-outline { background: transparent; color: #ffffff; border: 1px solid var(--border-color); }
+        .btn-bold-outline:hover { border-color: #ffffff; background: rgba(255, 255, 255, 0.05); }
 
         footer {
             border-top: 1px solid var(--border-color);
@@ -421,48 +170,24 @@
         footer a { color: #fff; text-decoration: none; font-weight: 700; }
 
         @media (max-width: 768px) {
-            header { 
-                flex-direction: column; 
-                align-items: center;
-                gap: 15px; 
-                padding: 15px 4%;
-            }
-            .logo {
-                text-align: center;
-            }
-            .nav-right { 
-                width: 100%; 
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 12px;
-            }
-            nav { 
-                justify-content: center;
-                gap: 12px; 
-                width: 100%;
-            }
-            nav a { 
-                font-size: 0.72rem; 
-            }
+            header { flex-direction: column; align-items: center; gap: 15px; }
+            .nav-right { width: 100%; justify-content: center; flex-wrap: wrap; }
+            nav { justify-content: center; gap: 12px; width: 100%; }
             .hero-actions { width: 100%; flex-direction: column; }
             .btn-bold-white, .btn-bold-outline { width: 100%; text-align: center; }
-            footer { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header>
-        <a href="javascript:void(0)" onclick="window.location.reload();" class="logo">
-            ANABLIDA <span>DISTRIBUTION</span>
-        </a>
+        <a href="index.html" class="logo">ANABLIDA <span>DISTRIBUTION</span></a>
         <div class="nav-right">
             <nav>
-                <a href="#artistas" data-es="Artistas" data-en="Artists">Artistas</a>
-                <a href="#infraestructura" data-es="Infraestructura" data-en="Services">Infraestructura</a>
-                <a href="#vision" data-es="Visión" data-en="Vision">Visión</a>
-                <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+                <a href="index.html" class="active" data-es="Inicio" data-en="Home">Inicio</a>
+                <a href="artistas.html" data-es="Artistas" data-en="Artists">Artistas</a>
+                <a href="servicios.html" data-es="Servicios" data-en="Services">Servicios</a>
+                <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
             </nav>
             <select class="lang-select" onchange="toggleLanguage(this.value)">
                 <option value="es">ES</option>
@@ -471,7 +196,6 @@
         </div>
     </header>
 
-    <!-- Main Hero Section Combinado -->
     <div class="hero">
         <div class="pill-tag" data-es="DISTRIBUCIÓN DIGITAL & INFRAESTRUCTURA MUSICAL" data-en="DIGITAL DISTRIBUTION & MUSIC INFRASTRUCTURE">
             DISTRIBUCIÓN DIGITAL & INFRAESTRUCTURA MUSICAL
@@ -486,187 +210,27 @@
         </p>
 
         <div class="hero-actions">
-            <button class="btn-bold-white" onclick="openModal()" data-es="SOLICITAR AHORA" data-en="APPLY NOW">SOLICITAR AHORA</button>
-            <button class="btn-bold-outline" onclick="openPortalModal(event)" data-es="PORTAL ARTISTAS" data-en="CLIENT PORTAL">PORTAL ARTISTAS</button>
+            <a href="contacto.html" class="btn-bold-white" data-es="SOLICITAR AHORA" data-en="APPLY NOW">SOLICITAR AHORA</a>
+            <a href="artistas.html" class="btn-bold-outline" data-es="VER ARTISTAS" data-en="VIEW ROSTER">VER ARTISTAS</a>
         </div>
     </div>
 
-    <!-- Roster / Artistas -->
-    <section id="artistas">
-        <h2 class="section-title" data-es="Artistas" data-en="Roster">Artistas</h2>
-        
-        <div class="cards-grid">
-            
-            <div class="artist-card">
-                <img src="https://i.scdn.co/image/ab6761610000e5ebf0d3427ff2d2a9745c9860ac" alt="Valuto" class="artist-img">
-                <div class="artist-info">
-                    <div class="artist-name">Valuto</div>
-                    <div class="artist-sub">Spotify Verified Artist</div>
-                    <a href="https://open.spotify.com/intl-es/artist/0AQym39jmsVTiggRZdyiSW?si=Eg5aBO9RSd2ha7gClvKMjw" target="_blank" class="btn-bold-outline" style="width: 100%; text-align: center; padding: 10px 0; font-size: 0.75rem;">Spotify Profile</a>
-                </div>
-            </div>
-
-            <div class="artist-card">
-                <img src="https://i.scdn.co/image/ab67616d0000b273cf12441404178d1cbd65f9c9" alt="yf_xs" class="artist-img">
-                <div class="artist-info">
-                    <div class="artist-name">yf_xs</div>
-                    <div class="artist-sub">Spotify Verified Artist</div>
-                    <a href="https://open.spotify.com/intl-es/artist/0eUxr3HC30zCeSKl4l4qGK?si=QrM7GCiURIqoNTCuxdIMmQ" target="_blank" class="btn-bold-outline" style="width: 100%; text-align: center; padding: 10px 0; font-size: 0.75rem;">Spotify Profile</a>
-                </div>
-            </div>
-
-            <div class="artist-card">
-                <img src="https://i.scdn.co/image/ab6761610000e5ebddb2766c05eee55cd404685c" alt="JOAKO" class="artist-img" style="object-position: top;">
-                <div class="artist-info">
-                    <div class="artist-name">JOAKO</div>
-                    <div class="artist-sub">Spotify Verified Artist</div>
-                    <a href="https://open.spotify.com/intl-es/artist/5kErqJMmN35SkXsrmLyPdc?si=qFYzcmFIQXGnHCL3eu_OqQ" target="_blank" class="btn-bold-outline" style="width: 100%; text-align: center; padding: 10px 0; font-size: 0.75rem;">Spotify Profile</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Infraestructura / Servicios -->
-    <section id="infraestructura">
-        <h2 class="section-title" data-es="Infraestructura & Servicios" data-en="Services & Infrastructure">Infraestructura & Servicios</h2>
-        
-        <p style="color: var(--text-muted); max-width: 800px; font-size: 1.1rem; line-height: 1.6;" data-es="Proporcionamos infraestructura de distribución digital, administración de catálogo y soporte estratégico para sellos y artistas independientes a escala global." data-en="We provide enterprise-grade digital music distribution, catalog management, and strategic infrastructure for independent artists and labels globally.">
-            Proporcionamos infraestructura de distribución digital, administración de catálogo y soporte estratégico para sellos y artistas independientes a escala global.
-        </p>
-
-        <div class="pillars-grid">
-            <div class="pillar-card">
-                <h3 data-es="Control de Metadatos" data-en="Metadata Control">Control de Metadatos</h3>
-                <p data-es="Estándares strictly de ingesta ISRC/UPC y entrega directa a más de 150 plataformas digitales." data-en="Strict ISRC/UPC standards and direct ingestion to over 150+ DSPs worldwide.">Estándares estrictos de ingesta ISRC/UPC y entrega directa a más de 150 plataformas digitales.</p>
-            </div>
-
-            <div class="pillar-card">
-                <h3 data-es="Gestión de Derechos" data-en="Rights Management">Gestión de Derechos</h3>
-                <p data-es="Protección integral de catálogo, gestión de derechos de autor y contabilidad de regalías transparente." data-en="Full catalog protection, copyright administration, and transparent royalty reporting.">Protección integral de catálogo, gestión de derechos de autor y contabilidad de regalías transparente.</p>
-            </div>
-
-            <div class="pillar-card" id="vision">
-                <h3 data-es="Estrategia Global" data-en="Global Strategy">Estrategia Global</h3>
-                <p data-es="Impulsamos proyectos independientes con herramientas para escalar del underground a DSPs internacionales." data-en="Empowering independent projects with tools to scale from underground to global DSPs.">Impulsamos proyectos independientes con herramientas para escalar del underground a DSPs internacionales.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- DSP Network -->
-    <section>
-        <h2 class="section-title" style="font-size: 1.2rem; margin-bottom: 25px;" data-es="Red de Distribución Global" data-en="Global Network">Red de Distribución Global</h2>
-        <div class="dsp-flex">
-            <span class="dsp-name">Spotify</span>
-            <span class="dsp-name">Apple Music</span>
-            <span class="dsp-name">YouTube Music</span>
-            <span class="dsp-name">Amazon Music</span>
-            <span class="dsp-name">Deezer</span>
-            <span class="dsp-name">Tidal</span>
-            <span class="dsp-name">TikTok</span>
-        </div>
-    </section>
-
-    <!-- Modal Form Solicitud -->
-    <div class="modal-overlay" id="submissionModal">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h3 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 8px;" data-es="Solicitar Distribución" data-en="Apply for Distribution">Solicitar Distribución</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px;" data-es="Envía la información de tu catálogo para evaluación." data-en="Submit your release or catalogue information for review.">Envía la información de tu catálogo para evaluación.</p>
-            
-            <form action="https://formspree.io/f/contacto@anablidadistribution.com" method="POST" onsubmit="handleSubmission(event)">
-                <div class="form-group">
-                    <label data-es="Nombre del Artista / Sello" data-en="Artist / Label Name">Nombre del Artista / Sello</label>
-                    <input type="text" name="name" required placeholder="Valuto / Sello">
-                </div>
-                <div class="form-group">
-                    <label data-es="Enlace de Demo / Música" data-en="Demo / Music Link">Enlace de Demo / Música</label>
-                    <input type="url" name="music_link" required placeholder="https://soundcloud.com/...">
-                </div>
-                <div class="form-group">
-                    <label data-es="Instagram / Redes" data-en="Instagram / Handle">Instagram / Redes</label>
-                    <input type="text" name="social" required placeholder="@instagram">
-                </div>
-                <div class="form-group">
-                    <label data-es="Detalles del Proyecto" data-en="Project Details">Detalles del Proyecto</label>
-                    <textarea name="details" placeholder="Número de tracks, fecha estimada..."></textarea>
-                </div>
-                <button type="submit" class="btn-bold-white" style="width: 100%; text-align: center;" data-es="ENVIAR SOLICITUD" data-en="SUBMIT APPLICATION">ENVIAR SOLICITUD</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal Portal Clientes -->
-    <div class="modal-overlay" id="portalModal">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closePortalModal()">&times;</button>
-            <h3 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 8px;" data-es="Portal de Clientes" data-en="Client Portal">Portal de Clientes</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px;" data-es="Acceso privado para la gestión de regalías y catálogo." data-en="Private access for royalty reporting and catalog management.">Acceso privado para la gestión de regalías y catálogo.</p>
-            
-            <form onsubmit="event.preventDefault(); alert('Acceso restringido a artistas y sellos autorizados.');">
-                <div class="form-group">
-                    <label data-es="Email / Usuario" data-en="Email / Username">Email / Usuario</label>
-                    <input type="email" required placeholder="client@label.com">
-                </div>
-                <div class="form-group">
-                    <label data-es="Contraseña" data-en="Password">Contraseña</label>
-                    <input type="password" required placeholder="••••••••">
-                </div>
-                <button type="submit" class="btn-bold-white" style="width: 100%; text-align: center; margin-top: 10px;" data-es="INICIAR SESIÓN" data-en="SIGN IN">INICIAR SESIÓN</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer id="contacto">
+    <footer>
         <div>
             <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 5px;">ANABLIDA <span style="color: var(--brand-cyan);">DISTRIBUTION</span></div>
             <p><a href="mailto:contacto@anablidadistribution.com">contacto@anablidadistribution.com</a></p>
         </div>
-        <p>&copy; 2026 Anablida Distribution. All rights reserved.</p>
+        <p>&copy; 2026 Anablida Distribution. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Scripts -->
     <script>
         function toggleLanguage(lang) {
             const elements = document.querySelectorAll('[data-es]');
             elements.forEach(el => {
                 const text = el.getAttribute(`data-${lang}`);
-                if (text) {
-                    el.innerHTML = text;
-                }
+                if (text) el.innerHTML = text;
             });
             document.documentElement.lang = lang;
-        }
-
-        function openModal() {
-            document.getElementById('submissionModal').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('submissionModal').classList.remove('active');
-        }
-
-        function openPortalModal(e) {
-            e.preventDefault();
-            document.getElementById('portalModal').classList.add('active');
-        }
-
-        function closePortalModal() {
-            document.getElementById('portalModal').classList.remove('active');
-        }
-
-        function handleSubmission(event) {
-            setTimeout(() => {
-                closeModal();
-            }, 500);
-        }
-
-        window.onclick = function(event) {
-            const subModal = document.getElementById('submissionModal');
-            const portModal = document.getElementById('portalModal');
-            if (event.target == subModal) closeModal();
-            if (event.target == portModal) closePortalModal();
         }
     </script>
 </body>

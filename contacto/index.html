@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ANABLIDA DISTRIBUTION | Contacto</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000000'/><text x='50%' y='65%' font-size='60' font-weight='900' fill='%2300f0ff' text-anchor='middle' font-family='sans-serif'>A</text></svg>">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #09090b;
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --border-color: #27272a;
+            --brand-cyan: #00f0ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.4; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo { font-size: 1.15rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: #ffffff; text-decoration: none; }
+        .logo span { color: var(--brand-cyan); }
+
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        nav { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        nav a:hover, nav a.active { color: #ffffff; }
+
+        .lang-select { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid var(--border-color); padding: 5px 10px; font-size: 0.8rem; font-weight: 700; border-radius: 4px; }
+
+        main { max-width: 1000px; margin: 0 auto; padding: 60px 5% 90px; }
+
+        .page-header { margin-bottom: 40px; }
+        .page-header h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
+        .page-header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; }
+
+        .contact-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; }
+        .contact-info { margin-bottom: 30px; }
+        .contact-info label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; font-weight: 700; }
+        .contact-info a { color: var(--brand-cyan); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
+
+        footer { border-top: 1px solid var(--border-color); padding: 60px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        footer p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+        footer a { color: #fff; text-decoration: none; font-weight: 700; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; align-items: center; gap: 15px; }
+            .nav-right { width: 100%; justify-content: center; flex-wrap: wrap; }
+            nav { justify-content: center; gap: 12px; width: 100%; }
+            .contact-box { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">ANABLIDA <span>DISTRIBUTION</span></a>
+        <div class="nav-right">
+            <nav>
+                <a href="/" data-es="Inicio" data-en="Home">Inicio</a>
+                <a href="/artistas/" data-es="Artistas" data-en="Artists">Artistas</a>
+                <a href="/servicios/" data-es="Servicios" data-en="Services">Servicios</a>
+                <a href="/contacto/" class="active" data-es="Contacto" data-en="Contact">Contacto</a>
+            </nav>
+            <select class="lang-select" onchange="toggleLanguage(this.value)">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1 data-es="Contacto" data-en="Contact Us">Contacto</h1>
+            <p data-es="Ponte en contacto con nuestro equipo para consultas de distribución o soporte." data-en="Get in touch with our team for distribution inquiries or support.">Ponte en contacto con nuestro equipo para consultas de distribución o soporte.</p>
+        </div>
+
+        <div class="contact-box">
+            <div class="contact-info">
+                <label data-es="Correo Electrónico" data-en="Email Address">Correo Electrónico</label>
+                <a href="mailto:contacto@anablidadistribution.com">contacto@anablidadistribution.com</a>
+            </div>
+            <div class="contact-info" style="margin-bottom: 0;">
+                <label data-es="Atención General" data-en="General Support">Atención General</label>
+                <p style="color: var(--text-muted); font-size: 0.95rem;" data-es="Respuestas en un plazo de 24 a 48 horas hábiles." data-en="Responses within 24 to 48 business hours.">Respuestas en un plazo de 24 a 48 horas hábiles.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 5px;">ANABLIDA <span style="color: var(--brand-cyan);">DISTRIBUTION</span></div>
+            <p><a href="mailto:contacto@anablidadistribution.com">contacto@anablidadistribution.com</a></p>
+        </div>
+        <p>&copy; 2026 Anablida Distribution. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleLanguage(lang) {
+            const elements = document.querySelectorAll('[data-es]');
+            elements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.innerHTML = text;
+            });
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>

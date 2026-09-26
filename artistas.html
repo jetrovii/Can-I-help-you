@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ANABLIDA DISTRIBUTION | Artistas</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000000'/><text x='50%' y='65%' font-size='60' font-weight='900' fill='%2300f0ff' text-anchor='middle' font-family='sans-serif'>A</text></svg>">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #09090b;
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --border-color: #27272a;
+            --brand-cyan: #00f0ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.4; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo { font-size: 1.15rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: #ffffff; text-decoration: none; }
+        .logo span { color: var(--brand-cyan); }
+
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        nav { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        nav a:hover, nav a.active { color: #ffffff; }
+
+        .lang-select { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid var(--border-color); padding: 5px 10px; font-size: 0.8rem; font-weight: 700; border-radius: 4px; }
+
+        main { max-width: 1400px; margin: 0 auto; padding: 60px 5% 90px; }
+
+        .page-header { margin-bottom: 50px; }
+        .page-header h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
+        .page-header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; }
+
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+        .artist-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 20px; transition: 0.3s; }
+        .artist-card:hover { border-color: var(--brand-cyan); }
+
+        .artist-img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; filter: grayscale(20%); transition: 0.3s; }
+        .artist-card:hover .artist-img { filter: grayscale(0%); }
+
+        .artist-info { padding-top: 18px; }
+        .artist-name { font-size: 1.5rem; font-weight: 900; margin-bottom: 2px; }
+        .artist-sub { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .btn-bold-outline { display: block; width: 100%; text-align: center; padding: 10px 0; font-size: 0.75rem; color: #fff; text-decoration: none; border: 1px solid var(--border-color); font-weight: 800; text-transform: uppercase; transition: 0.2s; }
+        .btn-bold-outline:hover { border-color: #fff; background: rgba(255, 255, 255, 0.05); }
+
+        footer { border-top: 1px solid var(--border-color); padding: 60px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        footer p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+        footer a { color: #fff; text-decoration: none; font-weight: 700; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; align-items: center; gap: 15px; }
+            .nav-right { width: 100%; justify-content: center; flex-wrap: wrap; }
+            nav { justify-content: center; gap: 12px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">ANABLIDA <span>DISTRIBUTION</span></a>
+        <div class="nav-right">
+            <nav>
+                <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+                <a href="artistas.html" class="active" data-es="Artistas" data-en="Artists">Artistas</a>
+                <a href="servicios.html" data-es="Servicios" data-en="Services">Servicios</a>
+                <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+            </nav>
+            <select class="lang-select" onchange="toggleLanguage(this.value)">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1 data-es="Nuestro Roster" data-en="Our Roster">Nuestro Roster</h1>
+            <p data-es="Explora nuestro catálogo oficial de artistas independientes." data-en="Explore our official independent artist roster.">Explora nuestro catálogo oficial de artistas independientes.</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="artist-card">
+                <img src="https://i.scdn.co/image/ab6761610000e5ebf0d3427ff2d2a9745c9860ac" alt="Valuto" class="artist-img">
+                <div class="artist-info">
+                    <div class="artist-name">Valuto</div>
+                    <div class="artist-sub">Spotify Verified Artist</div>
+                    <a href="https://open.spotify.com/intl-es/artist/0AQym39jmsVTiggRZdyiSW?si=Eg5aBO9RSd2ha7gClvKMjw" target="_blank" class="btn-bold-outline">Perfil de Spotify</a>
+                </div>
+            </div>
+
+            <div class="artist-card">
+                <img src="https://i.scdn.co/image/ab67616d0000b273cf12441404178d1cbd65f9c9" alt="yf_xs" class="artist-img">
+                <div class="artist-info">
+                    <div class="artist-name">yf_xs</div>
+                    <div class="artist-sub">Spotify Verified Artist</div>
+                    <a href="https://open.spotify.com/intl-es/artist/0eUxr3HC30zCeSKl4l4qGK?si=QrM7GCiURIqoNTCuxdIMmQ" target="_blank" class="btn-bold-outline">Perfil de Spotify</a>
+                </div>
+            </div>
+
+            <div class="artist-card">
+                <img src="https://i.scdn.co/image/ab6761610000e5ebddb2766c05eee55cd404685c" alt="JOAKO" class="artist-img" style="object-position: top;">
+                <div class="artist-info">
+                    <div class="artist-name">JOAKO</div>
+                    <div class="artist-sub">Spotify Verified Artist</div>
+                    <a href="https://open.spotify.com/intl-es/artist/5kErqJMmN35SkXsrmLyPdc?si=qFYzcmFIQXGnHCL3eu_OqQ" target="_blank" class="btn-bold-outline">Perfil de Spotify</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 5px;">ANABLIDA <span style="color: var(--brand-cyan);">DISTRIBUTION</span></div>
+            <p><a href="mailto:contacto@anablidadistribution.com">contacto@anablidadistribution.com</a></p>
+        </div>
+        <p>&copy; 2026 Anablida Distribution. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleLanguage(lang) {
+            const elements = document.querySelectorAll('[data-es]');
+            elements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.innerHTML = text;
+            });
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>
